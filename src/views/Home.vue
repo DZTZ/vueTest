@@ -3,7 +3,7 @@
 <!--    <HelloWorld msg="Welcome to Your Vue.js App" />-->
     <button @click="btn">啊啊啊啊</button>
 
-    <p style="font-weight: bold;font-size: 18px;">{{aPlus}}</p>
+<!--    <p style="font-weight: bold;font-size: 18px;">{{aPlus}}</p>-->
     <son ref="abc"></son>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
     son
   },
   created(){
-
+    console.log(this.$bus)
   },
   data: () => ({
     a:66,
@@ -50,12 +50,21 @@ export default {
     }
   },
   methods:{
-    btn(son){
+    btn(){
       // console.log(this.$children)
-      this.$refs.abc.sssset(111)
-      console.log(son)
+      // this.$refs.abc.sssset(111)
+      // console.log(son)
       // this.a = 100;
       // console.log(111111111111)
+      // this.$bus.$emit("aMsg", '来自A页面的消息');
+      // console.log(this.$bus)
+      // this.$bus.$off('aMsg')
+      // console.log(this.$bus)
+      // this.$router.push({name:'About'})
+      this.$router.push({name:'About'})
+    },
+    sendMsg() {
+      this.$bus.$emit("aMsg", '来自A页面的消息');
     }
   }
 };
